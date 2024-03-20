@@ -1,0 +1,14 @@
+- job_name: "kafka-broker"
+  static_configs:
+    - targets:
+        - "kafka-0-internal:7778"
+        - "kafka-1-internal:7778"
+        - "kafka-2-internal:7778"
+      labels:
+        env: "dev"
+  relabel_configs:
+    - source_labels: [__address__]
+      target_label: hostname
+      regex: '([^:]+)(:[0-9]+)?'
+      replacement: '${1}'
+

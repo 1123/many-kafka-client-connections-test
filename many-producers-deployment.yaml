@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: many-producers-deployment
+  labels:
+    app: many-producers-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: many-producers-app
+  template:
+    metadata:
+      labels:
+        app: many-producers-app
+    spec:
+      containers:
+      - name: many-producers-container
+        image: gcr.io/solutionsarchitect-01/many-producers-image
+        env:
+        - name: PAYLOAD_BYTES
+          value: "2000"
+        - name: NUM_PRODUCERS
+          value: "4000"
+        - name: PRODUCER_PROPERTIES_FILE
+          value: kubernetes-producer.properties

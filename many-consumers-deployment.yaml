@@ -1,0 +1,158 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: many-consumers-deployment-1
+  labels:
+    app: many-consumers-app-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: many-consumers-app-1
+  template:
+    metadata:
+      labels:
+        app: many-consumers-app-1
+    spec:
+      containers:
+      - name: many-consumers-container
+        image: gcr.io/solutionsarchitect-01/many-consumers-image
+        env:
+        - name: POLL_SLEEP_INTERVAL_MS
+          value: "1000"
+        - name: REPLICATION_FACTOR
+          value: "3"
+        - name: PREFIX
+          value: pref1
+        - name: NUM_CONSUMERS
+          value: "4000"
+        - name: CONSUMER_PROPERTIES_FILE
+          value: kubernetes-consumer.properties
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: many-consumers-deployment-2
+  labels:
+    app: many-consumers-app-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: many-consumers-app-2
+  template:
+    metadata:
+      labels:
+        app: many-consumers-app-2
+    spec:
+      containers:
+      - name: many-consumers-container
+        image: gcr.io/solutionsarchitect-01/many-consumers-image
+        env:
+        - name: POLL_SLEEP_INTERVAL_MS
+          value: "1000"
+        - name: REPLICATION_FACTOR
+          value: "3"
+        - name: PREFIX
+          value: pref2
+        - name: NUM_CONSUMERS
+          value: "4000"
+        - name: CONSUMER_PROPERTIES_FILE
+          value: kubernetes-consumer.properties
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: many-consumers-deployment-3
+  labels:
+    app: many-consumers-app-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: many-consumers-app-3
+  template:
+    metadata:
+      labels:
+        app: many-consumers-app-3
+    spec:
+      containers:
+      - name: many-consumers-container
+        image: gcr.io/solutionsarchitect-01/many-consumers-image
+        env:
+        - name: POLL_SLEEP_INTERVAL_MS
+          value: "1000"
+        - name: REPLICATION_FACTOR
+          value: "3"
+        - name: PREFIX
+          value: pref3
+        - name: NUM_CONSUMERS
+          value: "4000"
+        - name: CONSUMER_PROPERTIES_FILE
+          value: kubernetes-consumer.properties
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: many-consumers-deployment-4
+  labels:
+    app: many-consumers-app-4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: many-consumers-app-4
+  template:
+    metadata:
+      labels:
+        app: many-consumers-app-4
+    spec:
+      containers:
+      - name: many-consumers-container
+        image: gcr.io/solutionsarchitect-01/many-consumers-image
+        env:
+        - name: POLL_SLEEP_INTERVAL_MS
+          value: "1000"
+        - name: REPLICATION_FACTOR
+          value: "3"
+        - name: PREFIX
+          value: pref4
+        - name: NUM_CONSUMERS
+          value: "4000"
+        - name: CONSUMER_PROPERTIES_FILE
+          value: kubernetes-consumer.properties
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: many-consumers-deployment-5
+  labels:
+    app: many-consumers-app-5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: many-consumers-app-5
+  template:
+    metadata:
+      labels:
+        app: many-consumers-app-5
+    spec:
+      containers:
+      - name: many-consumers-container
+        image: gcr.io/solutionsarchitect-01/many-consumers-image
+        env:
+        - name: POLL_SLEEP_INTERVAL_MS
+          value: "1000"
+        - name: REPLICATION_FACTOR
+          value: "3"
+        - name: PREFIX
+          value: pref5
+        - name: NUM_CONSUMERS
+          value: "4000"
+        - name: CONSUMER_PROPERTIES_FILE
+          value: kubernetes-consumer.properties
